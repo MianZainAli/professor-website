@@ -1,0 +1,465 @@
+.section-header {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #750014;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #750014;
+}
+
+.about-section {
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+}
+
+.conference-item, .experience-item, .publication-item {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.conference-item:hover, .experience-item:hover, .publication-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    height: 250px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.publication-year {
+    color: #750014;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline-item {
+    padding: 1rem;
+    position: relative;
+    margin-bottom: 1rem;
+    border-left: 3px solid #750014;
+}
+
+.date-badge {
+    background-color: #750014;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+/* New styles similar to notices and updates */
+.timeline-card {
+    border-left: 4px solid #750014;
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.timeline-card:hover {
+    transform: translateX(10px);
+}
+
+.timeline-date {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.publication-card {
+    background: white;
+    padding: 0.75rem;  /* Reduced padding */
+    margin-bottom: 0.75rem; /* Reduced margin */
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-left: 3px solid #750014;
+}
+
+.publication-card h4 {
+    font-size: 1rem;  /* Smaller font size */
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+}
+
+.publication-card .badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.publication-card p {
+    font-size: 0.85rem;  /* Smaller font size */
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+
+.publications-container {
+    max-height: 600px;  /* Fixed height */
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.publication-card .btn {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+/* Custom scrollbar for publications container */
+.publications-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.publications-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.publications-container::-webkit-scrollbar-thumb {
+    background: #750014;
+    border-radius: 3px;
+}
+
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    height: 300px;
+}
+
+.professional-experience {
+    padding: 2rem 0;
+}
+
+.experience-entry {
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-left: 2rem;
+    border-left: 3px solid #750014;
+}
+
+.experience-entry h4 {
+    color: #750014;
+    margin-bottom: 0.5rem;
+}
+
+.experience-duration {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.experience-entry ul {
+    padding-left: 1.2rem;
+}
+
+.experience-entry ul li {
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+.conferences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.timeline-card {
+    position: relative;
+    border-left: 4px solid #750014;
+    margin-bottom: 0;  /* Changed from 1.5rem */
+}
+
+.conference-year {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #750014;
+    margin: 2rem 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.conference-location {
+    color: #495057;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+.conference-list {
+    margin-bottom: 2rem;
+}
+
+.conference-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.conference-item:last-child {
+    border-bottom: none;
+}
+
+.conference-title {
+    color: #750014;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.conference-details {
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+.conference-location {
+    color: #6c757d;
+    font-style: italic;
+}
+
+.conference-section {
+    padding: 2rem 0;
+}
+
+.conference-year-group {
+    margin-bottom: 3rem;
+}
+
+.conference-year-title {
+    color: #750014;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #750014;
+}
+
+.conference-entry {
+    padding: 1rem 0;
+    border-left: 3px solid #750014;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.conference-entry:before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    background: #750014;
+    border-radius: 50%;
+}
+
+.conference-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.conference-details {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.conference-location {
+    color: #750014;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.conference-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+}
+
+.conference-table th {
+    background-color: #750014;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+.conference-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.conference-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.gallery-item.hidden {
+    display: none;
+}
+
+.load-more-btn {
+    background-color: #750014;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    margin: 20px auto;
+    display: block;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.load-more-btn:hover {
+    opacity: 0.9;
+}
+
+.load-more-btn.hidden {
+    display: none;
+}
+
+/* Updated Modal styles */
+.modal-image {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-image.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.modal-content.zoomed {
+    transform: scale(1.5);
+    cursor: zoom-out;
+}
+
+.close-modal {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+/* Add dragging support */
+.modal-content.zoomed.dragging {
+    cursor: move;
+    transition: none;
+}
+
+/* Add these new styles */
+.profile-image-container {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.profile-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .profile-image-container {
+        max-width: 250px;
+        margin-bottom: 2rem;
+    }
+}
+
+/* Secondary Navbar Styles */
+.secondary-nav {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.secondary-nav.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.secondary-nav .nav-link {
+    color: #333;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.secondary-nav .nav-link:hover,
+.secondary-nav .nav-link.active {
+    color: #750014;
+}
+
+/* Adjust spacing for fixed nav */
+body.fixed-nav-active {
+    padding-top: 56px;
+}

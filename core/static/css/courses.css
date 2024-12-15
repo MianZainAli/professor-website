@@ -1,0 +1,178 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.hero {
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 4rem 0;
+}
+.course-section {
+    padding: 2rem 0;
+    flex: 1;
+}
+.course-card {
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    width: 100%;
+    max-width: 300px;
+    margin: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    background: white;
+    position: relative;
+}
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+.course-card:hover .card-title {
+    color: #750014;
+    text-decoration: underline;
+}
+.course-card img {
+    height: 180px;
+    object-fit: cover;
+    transition: all 0.5s ease;
+    filter: brightness(0.95);
+}
+.course-card:hover img {
+    filter: brightness(1.05);
+    transform: scale(1.05);
+}
+.course-card .card-body {
+    padding: 1.25rem;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.95), white);
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+.course-card .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+.course-card .card-text {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.btn-primary {
+    background-color: #750014; /* Changed button color */
+    border: none; /* Removed border */
+    transition: background-color 0.3s; /* Added transition */
+}
+.btn-primary:hover {
+    background-color: #5a0011; /* Changed hover color */
+}
+.course-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the grid */
+}
+.course-grid::after {
+    content: "";
+    flex: auto;
+}
+footer {
+    background-color: #750014;
+}
+.course-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* Remove white space around the list */
+}
+.course-list img {
+    width: 100px; /* Adjusted width */
+    height: 100%; /* Match card height */
+    object-fit: cover;
+    margin: 0; /* Remove margin */
+}
+.course-list .course-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.course-card-horizontal {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.course-card-horizontal img {
+    width: 150px;
+    height: 100%;
+    object-fit: cover;
+}
+.course-card-horizontal .card-body {
+    padding: 1rem;
+}
+.btn-custom {
+    background-color: #6c757d; /* Changed to secondary color */
+    color: white;
+    padding: 0.5rem 1rem; /* Adjusted padding */
+    border-radius: 5px; /* Added border-radius */
+    text-align: center; /* Center text */
+    margin-left: 1rem; /* Added margin to separate from text */
+}
+.btn-custom:hover {
+    background-color: #5a6268; /* Adjusted hover color */
+}
+.section-header {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #750014;
+    text-align: center;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+.section-subheader {
+    font-size: 1.25rem;
+    color: #6c757d;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.subject-label {
+    font-size: 0.75rem;
+    color: #750014;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    opacity: 0.8;
+}
+@media (max-width: 768px) {
+    .course-card {
+        max-width: 100%;
+        margin: 0.75rem 0;
+    }
+    .course-card img {
+        height: 160px;
+    }
+    .course-card .card-body {
+        padding: 1rem;
+    }
+    .course-card .card-title {
+        font-size: 1rem;
+    }
+    .course-card .card-text {
+        font-size: 0.85rem;
+    }
+    .subject-label {
+        font-size: 0.75rem;
+    }
+}

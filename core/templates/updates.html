@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+    <title>Updates - Dr. Rab Nawaz Jadoon</title>
+    <link rel="stylesheet" href="{% static "css/updates.css" %}">
+{% endblock head %}
+
+{% block content %}
+    <!-- Updates Section -->
+    <div class="updates-container">
+        <h1 class="section-header">All Updates</h1>
+        <div id="allUpdatesFeed"></div>
+        <div class="text-center mt-4 mb-4">
+            <button id="seeMoreBtn" class="btn btn-outline-danger">See More</button>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static "js/updates.js" %}"></script>
+{% endblock scripts %}

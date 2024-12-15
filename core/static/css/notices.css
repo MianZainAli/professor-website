@@ -1,0 +1,19 @@
+.section-header {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #750014;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.notice-card {
+    border-left: 4px solid #750014;
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s;
+}
+.notice-card:hover {
+    transform: translateX(10px);
+}
+.notice-date {
+    color: #6c757d;
+    font-size: 0.9rem;
+}

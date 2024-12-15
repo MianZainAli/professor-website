@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+    <title>Course Details</title>
+    <link rel="stylesheet" href="{% static "css/course-details.css" %}">
+{% endblock head %}
+
+{% block content %}
+    {% if error %}
+        <section class="error-section text-center">
+            <div class="container">
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+                <a href="{% url 'courses' %}" class="btn btn-primary mt-3">Back to Courses</a>
+            </div>
+        </section>
+    {% else %}
+        <!-- Hero Section -->
+        <section class="hero text-center">
+            <div class="container">
+                <h1 class="section-header">{{ course.title }}</h1>
+                <p class="section-subheader">{{ course.description }}</p>
+            </div>
+        </section>
+
+        <!-- Course Details Section -->
+        <section class="course-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="course-details">
+                            <h3><i class="fas fa-file-pdf"></i> Course Materials</h3>
+                            {% if course.lectures.exists or course.handouts.exists or course.video_lectures.exists or course.lab_work.exists %}
+                                {% if course.lectures.exists %}
+                                <div class="mb-4">
+                                    <h4>Lectures</h4>
+                                    <ul class="material-list">
+                                        {% for lecture in course.lectures.all %}
+                                        <li>
+                                            <a href="{{ lecture.get_material_url }}" class="material-link">
+                                                <i class="fas fa-file-pdf"></i> 
+                                                {{ lecture.title }}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+
+                                {% if course.handouts.exists %}
+                                <div class="mb-4">
+                                    <h4>Handouts</h4>
+                                    <ul class="material-list">
+                                        {% for handout in course.handouts.all %}
+                                        <li>
+                                            <a href="{{ handout.get_material_url }}" class="material-link">
+                                                <i class="fas fa-file-alt"></i> 
+                                                {{ handout.title }}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+
+                                {% if course.video_lectures.exists %}
+                                <div class="mb-4">
+                                    <h4>Video Lectures</h4>
+                                    <ul class="video-list">
+                                        {% for video in course.video_lectures.all %}
+                                        <li>
+                                            <div class="video-link" 
+                                               data-video-url="{{ video.get_embed_url }}"
+                                               data-video-title="{{ video.title }}"
+                                               data-video-duration="{{ video.duration }}">
+                                                <i class="fas fa-play-circle"></i> 
+                                                {{ video.title }} 
+                                                {% if video.duration %}({{ video.duration }}){% endif %}
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+
+                                {% if course.lab_work.exists %}
+                                <div class="mb-4">
+                                    <h4>Lab Work</h4>
+                                    <ul class="material-list">
+                                        {% for lab in course.lab_work.all %}
+                                        <li>
+                                            <a href="{{ lab.get_material_url }}" class="material-link">
+                                                <i class="fas fa-flask"></i> 
+                                                {{ lab.title }}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+                            {% else %}
+                                <p class="text-center text-muted">No course materials are available at this time.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="course-details">
+                            <h3><i class="fas fa-info-circle"></i> Course Information</h3>
+                            <ul>
+                                <li>Credit Hours: {{ course.credit_hours }}</li>
+                                <li>Prerequisites: {{ course.prerequisites }}</li>
+                                <li>Level: {{ course.level }}</li>
+                                <li>Department: {{ course.department }}</li>
+                            </ul>
+                        </div>
+
+                        <div class="course-details">
+                            <h3><i class="fas fa-history"></i> Course History</h3>
+                            <div class="history-timeline">
+                                {% for history in course.history.all %}
+                                <div class="history-item">{{ history.get_formatted_semester }}</div>
+                                {% empty %}
+                                <div class="history-item">No history available</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Video Title</h5>
+                <button type="button" class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="video-container"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Debug check for modal
+    const modal = document.getElementById('videoModal');
+    console.log('Modal element:', modal); // Debug line
+
+    if (!modal) {
+        console.error('Video modal not found in the DOM');
+        return;
+    }
+
+    const modalTitle = modal.querySelector('.modal-title');
+    const videoContainer = modal.querySelector('.video-container');
+    const closeBtn = modal.querySelector('.close-modal');
+
+    // Debug check for video links
+    const videoLinks = document.querySelectorAll('.video-link');
+
+    // Attach click handlers to video links
+    videoLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const videoUrl = this.dataset.videoUrl;
+            const videoTitle = this.dataset.videoTitle;
+                        
+            if (videoUrl) {
+                modalTitle.textContent = videoTitle || 'Video';
+                videoContainer.innerHTML = `
+                    <iframe 
+                        src="${videoUrl}"
+                        frameborder="0"
+                        style="width: 100%; height: 500px;"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>`;
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            } else {
+                console.error('No video URL found in clicked element');
+            }
+        });
+    });
+
+    // Close modal handlers
+    const closeModal = () => {
+        modal.classList.remove('show');
+        videoContainer.innerHTML = '';
+        document.body.style.overflow = 'auto';
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+    });
+});
+</script>
+{% endblock scripts %}

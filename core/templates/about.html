@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block head %}
+    <title>About - Dr. Rab Nawaz Jadoon</title>
+    <link href="{% static "css/about.css" %}" rel="stylesheet">
+{% endblock head %}
+
+
+{% block content %}
+    <!-- Brief Bio Section -->
+    <section id="bio" class="about-section">
+        <div class="container">
+            <h2 class="section-header">Brief Bio</h2>
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <div class="profile-image-container">
+                        <img src="{% static "img/image.png" %}" alt="Dr. Rab Nawaz Jadoon" class="profile-image">
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <p>I am currently working as an Assistant Professor in the Department of Computer Sciences at COMSATS University, Islamabad (Abbottabad Campus), Pakistan. From Sep 2007 to Aug 2009, I was a Research Associate at COMSATS University, Abbottabad. Before that, I was Lecturer Computer Science at Government Postgraduate College No. 1 Abbottabad (2005 to 2007).</p>
+                    <p>I received M.Sc(CS) degree in Computer Science from Hazara University, Mansehra, Pakistan in 2004 and then did MS-Computer Sciences from COMSATS University Abbottabad in 2009 respectively on Scholarship respectively. I got selected under the CAS-TWAS President Fellowship Program 2016 for Ph.D. Study funded by UNESCO at the University of Science and Technology of China (USTC) Hefei China. I completed my Ph.D. in Information and Communication Engineering with Distinction in Just 2.5 Years.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conferences Section -->
+    <section id="conferences" class="about-section bg-white">
+        <div class="container">
+            <h2 class="section-header">Conferences & Workshops</h2>
+            <div class="table-responsive">
+                <table class="conference-table">
+                    <thead>
+                        <tr>
+                            <th>Conference/Workshop</th>
+                            <th>Location</th>
+                            <th>Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>6th CIIT Workshop on Research in Computing (CWRC)</td>
+                            <td>COMSATS Abbottabad</td>
+                            <td>October 27, 7</td>
+                        </tr>
+                        <tr>
+                            <td>International Conference on Frontiers of Information Technology (FIT)</td>
+                            <td>Marriott Islamabad</td>
+                            <td>December 17-18, 2007</td>
+                        </tr>
+                        <tr>
+                            <td>7th CIIT Workshop on Research in Computing (CWRC)</td>
+                            <td>COMSATS Lahore</td>
+                            <td>June 23, 2008</td>
+                        </tr>
+                        <!-- Add all other conferences in the same format -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience Section -->
+    <section id="experience" class="about-section">
+        <div class="container">
+            <h2 class="section-header">Professional Experience</h2>
+            <div class="professional-experience">
+                <div class="experience-entry">
+                    <h4>Assistant Professor</h4>
+                    <div class="experience-duration">2019 - Present</div>
+                    <p>COMSATS University Islamabad, Abbottabad Campus</p>
+                    <ul>
+                        <li>Teaching advanced computer science and engineering courses</li>
+                        <li>Research supervision in signal processing and machine learning</li>
+                        <li>Leading research projects in collaboration with international partners</li>
+                    </ul>
+                </div>
+                <div class="experience-entry">
+                    <h4>PhD Researcher</h4>
+                    <div class="experience-duration">2016 - 2019</div>
+                    <p>University of Science and Technology of China (USTC), Hefei</p>
+                    <ul>
+                        <li>Conducted research in Information and Communication Engineering</li>
+                        <li>Completed PhD with distinction in 2.5 years</li>
+                        <li>CAS-TWAS President Fellowship Program recipient</li>
+                    </ul>
+                </div>
+                <div class="experience-entry">
+                    <h4>Research Associate</h4>
+                    <div class="experience-duration">2007 - 2009</div>
+                    <p>COMSATS University, Abbottabad</p>
+                </div>
+                <div class="experience-entry">
+                    <h4>Lecturer Computer Science</h4>
+                    <div class="experience-duration">2005 - 2007</div>
+                    <p>Government Postgraduate College No. 1 Abbottabad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Publications Section -->
+    <section id="publications" class="about-section bg-white">
+        <div class="container">
+            <h2 class="section-header">Research Publications</h2>
+            <div class="publications-container">
+                <div class="publication-card">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h4>Deep Learning-Based Signal Processing for Next-Generation Communication Systems</h4>
+                        <span class="badge bg-secondary">2023</span>
+                    </div>
+                    <p class="text-muted">Authors: Rab Nawaz Jadoon, Wei Zhang, Liu Yang</p>
+                    <p>IEEE Transactions on Signal Processing</p>
+                    <a href="#" class="btn btn-outline-secondary btn-sm">View</a>
+                </div>
+                <div class="publication-card">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h4>Advanced Signal Processing Techniques</h4>
+                        <span class="badge bg-secondary">2023</span>
+                    </div>
+                    <p class="text-muted">Authors: Rab Nawaz Jadoon, et al.</p>
+                    <p>Published in International Journal of Computer Science</p>
+                    <a href="#" class="btn btn-outline-secondary btn-sm">Read Paper</a>
+                </div>
+                <div class="publication-card">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h4>Machine Learning in Signal Processing</h4>
+                        <span class="badge bg-secondary">2022</span>
+                    </div>
+                    <p class="text-muted">Authors: Rab Nawaz Jadoon, John Doe</p>
+                    <p>IEEE Transactions on Signal Processing</p>
+                    <a href="#" class="btn btn-outline-secondary btn-sm">Read Paper</a>
+                </div>
+                <div class="publication-card">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h4>Machine Learning in Signal Processing</h4>
+                        <span class="badge bg-secondary">2022</span>
+                    </div>
+                    <p class="text-muted">Authors: Rab Nawaz Jadoon, John Doe</p>
+                    <p>IEEE Transactions on Signal Processing</p>
+                    <a href="#" class="btn btn-outline-secondary btn-sm">Read Paper</a>
+                </div>
+                <div class="publication-card">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h4>Machine Learning in Signal Processing</h4>
+                        <span class="badge bg-secondary">2022</span>
+                    </div>
+                    <p class="text-muted">Authors: Rab Nawaz Jadoon, John Doe</p>
+                    <p>IEEE Transactions on Signal Processing</p>
+                    <a href="#" class="btn btn-outline-secondary btn-sm">Read Paper</a>
+                </div>
+                <div class="publication-card">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h4>Machine Learning in Signal Processing</h4>
+                        <span class="badge bg-secondary">2022</span>
+                    </div>
+                    <p class="text-muted">Authors: Rab Nawaz Jadoon, John Doe</p>
+                    <p>IEEE Transactions on Signal Processing</p>
+                    <a href="#" class="btn btn-outline-secondary btn-sm">Read Paper</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="about-section">
+        <div class="container">
+            <h2 class="section-header">Photo Gallery</h2>
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2016/10/with-prof-zhou.jpg" alt="With Professor Zhou">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2012/03/ciit-atd1.jpg" alt="CIIT Abbottabad">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2014/02/in-office.jpg" alt="Office Work">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2016/10/with-prof-zhou.jpg" alt="With Professor Zhou">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2012/03/ciit-atd1.jpg" alt="CIIT Abbottabad">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2014/02/in-office.jpg" alt="Office Work">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2016/10/with-prof-zhou.jpg" alt="With Professor Zhou">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2012/03/ciit-atd1.jpg" alt="CIIT Abbottabad">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2014/02/in-office.jpg" alt="Office Work">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2016/10/with-prof-zhou.jpg" alt="With Professor Zhou">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2012/03/ciit-atd1.jpg" alt="CIIT Abbottabad">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2014/02/in-office.jpg" alt="Office Work">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2016/10/with-prof-zhou.jpg" alt="With Professor Zhou">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2012/03/ciit-atd1.jpg" alt="CIIT Abbottabad">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2014/02/in-office.jpg" alt="Office Work">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2016/10/with-prof-zhou.jpg" alt="With Professor Zhou">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2012/03/ciit-atd1.jpg" alt="CIIT Abbottabad">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://jadoon956.wordpress.com/wp-content/uploads/2014/02/in-office.jpg" alt="Office Work">
+                </div>
+            </div>
+            <button class="load-more-btn" id="loadMoreBtn">Load More</button>
+        </div>
+    </section>
+    
+    <div class="modal-image" id="imageModal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static "js/about.js" %}"></script>
+{% endblock scripts %}

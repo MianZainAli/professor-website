@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <title>Courses Taught by Dr. Rab Nawaz Jadoon</title>
+    <link rel="stylesheet" href="{% static "css/courses.css" %}">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+{% endblock head %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero text-center">
+        <div class="container">
+            <h1>Courses Taught by Dr. Rab Nawaz Jadoon</h1>
+            <p>Explore the courses taught by Dr. Rab Nawaz Jadoon.</p>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="course-section">
+        <div class="container">
+            <h2 class="section-header">Courses</h2>
+            {% if error %}
+                <div class="alert alert-danger text-center" role="alert">
+                    {{ error }}
+                </div>
+            {% elif message %}
+                <div class="alert alert-info text-center" role="alert">
+                    {{ message }}
+                </div>
+            {% else %}
+                <div class="row justify-content-center">
+                    {% for course in courses %}
+                    <div class="col-6 col-md-3">
+                        <a href="{% url 'course_detail' course_id=course.id %}" class="card course-card">
+                            <img src="{{ course.get_image_url }}" class="card-img-top" alt="{{ course.title }}">
+                            <div class="card-body">
+                                <p class="subject-label">{{ course.subject }}</p>
+                                <h5 class="card-title">{{ course.title }}</h5>
+                                <p class="card-text">{{ course.description|truncatewords:20 }}</p>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        AOS.init({
+            duration: 1200,
+        });
+    </script>
+{% endblock scripts %}
