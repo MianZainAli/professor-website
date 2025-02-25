@@ -31,200 +31,144 @@
     </section>
 
     <!-- Chinese Resources -->
-    <section id="chinese-resources" class="chinese-resources" >
-        <div class="container my-2">
-            <h1 class="section-header">Chinese Stuff</h1>
-            <p class="section-subheader">Some Academic and Extra-Curricular Activities in USTC Hefei China</p>
-        
-            <div class="row">
-                <ul class="list-group list-group-flush">
-                    <!-- Family Introduction -->
-                    <li class="list-group-item">
-                        <span>Family Introduction – in Chinese Language</span>
-                        <a ="path/to/family-introduction.pdf" class="btn btn-link text-secondary">Click to Download</a>
-                    </li>
+    {% if chineseResources %}
+        <section id="chinese-resources" class="chinese-resources py-5">
+            <div class="container">
+                <h1 class="section-header mb-4 mt-5">Chinese Stuff</h1>
+                <p class="section-subheader mb-4">Some Academic and Extra-Curricular Activities in USTC Hefei China</p>
             
-                    <!-- Scenic and Historical Places -->
-                    <li class="list-group-item">
-                        <span>Beautiful Scenic and Historical Places of China</span> by Rab Nawaz Jadoon
-                        <a href="path/to/scenic-places.pdf" class="btn btn-link text-secondary">Click to Download</a>
-                    </li>
-            
-                    <!-- Chinese Panorama Presentation -->
-                    <li class="list-group-item">
-                        Beautiful Scenic Places of China — Presentation in Chinese Panorama Class by Rab Nawaz Jadoon
-                        <a href="path/to/chinese-panorama-presentation.pdf" class="btn btn-link text-secondary">Click to Download</a>
-                    </li>
-            
-                    <!-- YouTube Video -->
-                    <li class="list-group-item">
-                        Video Presentation: The Great Wall of China and Forbidden City of Beijing
-                        <p>Search on YouTube: <em>"The Great Wall of China and Forbidden City of Beijing by Rab Nawaz Jadoon — Full Version (2)"</em></p>
-                        <a href="https://www.youtube.com/watch?v=vT1DU130kfQ&t=64s" class="btn text-white bg-secondary " target="_blank">Watch on YouTube</a>
-                    </li>
-            
-                    <!-- Anhui Provincial Museum Report -->
-                    <li class="list-group-item">
-                        <span>Anhui Provincial Museum Hefei, China: A Simple Report</span> by Rab Nawaz Jadoon
-                        <a href="path/to/anhui-museum-report.pdf" class="btn btn-link text-secondary">Click to Download</a>
-                    </li>
-            
-                    <!-- Anhui Culture Trip -->
-                    <li class="list-group-item">
-                        <span>A Simple Report on Anhui Culture Trip (2017)</span> <span class="text-muted">by Rab Nawaz Jadoon</span> 
-                        <a href="path/to/anhui-culture-trip-report.pdf" class="btn btn-link text-secondary">Click to Download</a>
-                    </li>
-            
-                    <!-- Trip to Huangshan Mountain -->
-                    <li class="list-group-item">
-                        <span>A Post Trip Report (Trip to Huangshan Mountain)</span> by Rab Nawaz Jadoon
-                        <a href="path/to/huangshan-trip-report.pdf" class="btn btn-link text-secondary">Click to Download</a>
-                    </li>
-            
-                    <!-- Mathematics Theory Report -->
-                    <li class="list-group-item">
-                        <span>Comprehensive Report of Mathematics Theory of Information Science</span> by Rab Nawaz Jadoon
-                        <a href="path/to/math-theory-report.pdf" class="btn btn-link text-secondary">Click to Download</a>
-                    </li>
-            
-                    <!-- Network Information Theory Report -->
-                    <li class="list-group-item">
-                        <span>Comprehensive Report of Network Information Theory</span> by Rab Nawaz Jadoon
-                        <a href="path/to/network-info-theory-report.pdf" class="btn btn-link text-secondary">Click to Download</a>
-                    </li>
-            
-                    <!-- First Year Result Card -->
-                    <li class="list-group-item">
-                        <span>First Year Result Card (Fall 16 and Spring 17)</span>
-                        <a href="path/to/result-card.pdf" class="btn btn-link text-secondary">Click to View</a>
-                    </li>
-            
-                    <!-- PhD Supervisor Meeting -->
-                    <li class="list-group-item">
-                        <span>Last meeting glimpses with my PhD Supervisor</span>
-                        <p class="text-muted">No further details provided.</p>
-                    </li>
-                </ul>
-                <div class="">
-                    <div>
-                        
-                    </div>
+                <div class="row g-4">
+                    {% for resource in chineseResources %}
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="resource-card h-100">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title mb-3">{{ resource.title }}</h5>
+                                        {% if resource.description %}
+                                            <p class="card-text text-muted mb-3">{{ resource.description }}</p>
+                                        {% endif %}
+                                        
+                                        {% with file_extension=resource.file.name|lower %}
+                                            <div class="resource-content">
+                                                {% if file_extension|slice:"-4:" == '.pdf' %}
+                                                    <div class="pdf-preview">
+                                                        <i class="fas fa-file-pdf fa-3x text-danger mb-2"></i>
+                                                        <a href="{{ resource.file.url }}" class="btn btn-outline-primary btn-sm d-block" target="_blank">
+                                                            View PDF Document
+                                                        </a>
+                                                    </div>
+                                                
+                                                {% elif file_extension|slice:"-4:" in '.jpg,.png,.gif,.jpeg' %}
+                                                    <div class="image-preview text-center">
+                                                        <a href="{{ resource.file.url }}" target="_blank">
+                                                            <img src="{{ resource.file.url }}" class="img-fluid rounded mb-2" alt="{{ resource.title }}">
+                                                        </a>
+                                                    </div>
+                                                
+                                                {% elif file_extension|slice:"-4:" in '.mp4,.mov,.webm' %}
+                                                    <div class="video-preview">
+                                                        <video class="w-100 rounded mb-2" controls preload="metadata">
+                                                            <source src="{{ resource.file.url }}" type="video/mp4">
+                                                            Your browser does not support the video tag.
+                                                        </video>
+                                                    </div>
+                                                
+                                                {% else %}
+                                                    <div class="file-preview text-center">
+                                                        <i class="fas fa-file fa-3x text-primary mb-2"></i>
+                                                        <a href="{{ resource.file.url }}" class="btn btn-outline-primary btn-sm d-block" download>
+                                                            Download File
+                                                        </a>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        {% endwith %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="col-12">
+                            <div class="alert alert-info">No resources available.</div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
-            
-        </div>
-    </section>
+        </section>
+    {% endif %}
 
     <!-- Special moment -->
-    <section class="bg-light py-5">
-        <div class="container">
-            <h1 class="section-header">Past Moments</h1>
-            <div id="momentsCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#momentsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#momentsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#momentsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#momentsCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                    <button type="button" data-bs-target="#momentsCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    {% if carouselMoments %}
+        <section class="bg-light py-5">
+            <div class="container">
+                <h1 class="section-header">Past Moments</h1>
+                <div id="momentsCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        {% for moment in carouselMoments %}
+                            <button type="button" 
+                                    data-bs-target="#momentsCarousel" 
+                                    data-bs-slide-to="{{ forloop.counter0 }}" 
+                                    class="{% if forloop.first %}active{% endif %}"
+                                    {% if forloop.first %}aria-current="true"{% endif %}
+                                    aria-label="Slide {{ forloop.counter }}">
+                            </button>
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-inner rounded">
+                        {% for moment in carouselMoments %}
+                            <div class="carousel-item active">
+                                <img src="{{ moment.image.url}}" class="d-block w-100 carousel-image" alt="Graduation Day">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{ moment.title }}</h5>
+                                    <p>{{ moment.description }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#momentsCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#momentsCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
-                <div class="carousel-inner rounded">
-                    <div class="carousel-item active">
-                        <img src="https://images.unsplash.com/photo-1731574573959-993dda686d36?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100 carousel-image" alt="Graduation Day">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Graduation Day</h5>
-                            <p>The day I received my diploma and embarked on a new journey.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://plus.unsplash.com/premium_photo-1725408094651-66696dfaa3a9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100 carousel-image" alt="First Job">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>First Job</h5>
-                            <p>Starting my career at my dream company, full of excitement and nerves.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://images.unsplash.com/photo-1734021669943-bca1c5c00dcf?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100 carousel-image" alt="World Travel">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>World Travel</h5>
-                            <p>Exploring new cultures and making unforgettable memories around the globe.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://plus.unsplash.com/premium_photo-1725408094651-66696dfaa3a9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100 carousel-image" alt="First Job">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>First Job</h5>
-                            <p>Starting my career at my dream company, full of excitement and nerves.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://images.unsplash.com/photo-1734021669943-bca1c5c00dcf?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100 carousel-image" alt="World Travel">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>World Travel</h5>
-                            <p>Exploring new cultures and making unforgettable memories around the globe.</p>
-                        </div>
-                    </div>
-                    
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#momentsCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#momentsCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
 
     <!-- Notice Board -->
-    <section id="notice-board" class="notice-board">
-        <div class="container">
-            <h1 class="section-header">Notice Board</h1>
-            <div class="accordion" id="noticeAccordion">
-                <div class="accordion-item">
-                    <h2 class="accordion-header ">
-                        <button class="accordion-button bg-light " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                            Important: Exam Schedule Change
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#noticeAccordion">
-                        <div class="accordion-body">
-                            The final exam for CHN301 has been rescheduled to May 15th, 2023. Please make note of this change.
+    {% if notices %}
+        <section id="notice-board" class="notice-board">
+            <div class="container">
+                <h1 class="section-header">Notice Board</h1>
+                <div class="accordion" id="noticeAccordion">
+                    {% for notice in notices %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button bg-light d-flex justify-content-between w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                {{ notice.title}}  
+                                {% if notice.important %}
+                                    <span class="mx-2 badge bg-danger">Important</span>
+                                {% endif %}
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" data-bs-parent="#noticeAccordion">
+                            <div class="accordion-body">
+                                {{ notice.content }}
+                            </div>
                         </div>
-                    </div>
 
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed bg-light " type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                            Office Hours Update
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#noticeAccordion">
-                        <div class="accordion-body">
-                            Office hours will be held virtually via Zoom for the next two weeks due to building maintenance.
-                        </div>
                     </div>
+                    {% endfor %}
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed bg-light " type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                            Guest Lecture Announcement
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#noticeAccordion">
-                        <div class="accordion-body">
-                            Dr. Jane Smith from Beijing University will be giving a guest lecture on Modern Chinese Literature on April 20th, 2023.
-                        </div>
-                    </div>
+                <div class="d-flex justify-content-center">
+                    <a href="notice-board/" class="btn btn-link text-secondary">See all</a>
                 </div>
             </div>
-            <div class="d-flex justify-content-center">
-                <a href="notice-board/" class="btn btn-link text-secondary">See all</a>
-            </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
 
     <!-- Course Announcements -->
     <!-- <section id="course-announcements" class="course-announcements">
@@ -236,17 +180,28 @@
     </section> -->
 
     <!-- Updates -->
+    {% if updates %}
     <section id="updates" class="updates bg-light">
         <div class="container">
             <h1 class="section-header">Updates</h1>
             <div id="updatesFeed">
-                <!-- Update items will be dynamically added here -->
+                {% for update in updates %}
+                    <div class="update-item">
+                        <i class="fas fa-bullhorn update-icon"></i>
+                        <div class="update-content">
+                            <h5 class="update-title">{{update.title}}</h5>
+                            <h6 class="update-date">{{update.date}}</h6>
+                            <p class="update-text">{{update.content}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
             <div class="d-flex justify-content-center mt-4">
                 <a href="updates/" class="btn btn-link text-secondary">See all</a>
             </div>
         </div>
     </section>
+    {% endif %}
 
     <!-- Coding Quiz Game -->
     <section id="coding-game" class="game-section">

@@ -1,14 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #750014;">
     <div class="container">
-        <a class="navbar-brand" href="{% url "index" %}">Dr. Rab Nawaz Jadoon</a>
+        <a class="navbar-brand" href="{% url "index" %}" style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; letter-spacing: 0.5px; font-weight: 500;">Dr. Rab Nawaz Jadoon</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="{% url "introduction" %}">Introduction</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url "courses" %}">Courses Taught</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url "contact" %}">Contact</a></li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'introduction' %}active{% endif %}" href="{% url "introduction" %}">Introduction</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'courses' %}active{% endif %}" href="{% url "courses" %}">Courses Taught</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url "contact" %}">Contact</a>
+                </li>
             </ul>
         </div>
     </div>

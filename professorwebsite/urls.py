@@ -21,8 +21,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Include the urls of the professor app
     path('', include('core.urls')),
+    path('courses/', include('courses.urls')),
 ]
 
 if settings.DEBUG:

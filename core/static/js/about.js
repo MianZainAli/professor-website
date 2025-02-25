@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Smooth scroll to section
-    document.querySelectorAll('.secondary-nav a[^="#"]').forEach(anchor => {
+    document.querySelectorAll('.secondary-nav a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
